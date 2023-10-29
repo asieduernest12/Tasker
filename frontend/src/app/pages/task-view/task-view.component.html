@@ -1,10 +1,8 @@
 <div class="centered-content">
   <div class="task-manager-container">
     <div class="sidebar has-background-white">
-      <h1 class="title has-text-primary"><a routerLink="/">Lists...</a></h1>
-      <button class="button is-primary" (click)="logout()">
-        logout
-      </button>
+      <h1 class="title has-text-primary"><a routerLink="/">Lists</a></h1>
+      
       <div class="list-menu">
         <a
           class="list-menu-item"
@@ -23,7 +21,36 @@
 
     <div class="task-list-container has-background-light">
       <div *ngIf="tasks">
-        <h1 class="title has-text-primary">Tasks</h1>
+        <div class="top-bar">
+          <h1 class="title has-text-primary">Tasks</h1>
+          <div class="dropdown is-hoverable is-right">
+            <div class="dropdown-trigger">
+              <button class="button" aria-haspopup="true">
+                <span class="icon is-small">
+                  <i class="fas fa-cog" aria-hidden="true"></i>
+                </span>
+              </button>
+            </div>
+            <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+              <div class="dropdown-content">
+                <a class="dropdown-item">
+                  My Profile
+                </a>
+                <a class="dropdown-item">
+                  Advanced Settings
+                </a>
+                <a class="dropdown-item" >
+                  Docs
+                </a>
+                <a class="dropdown-item" (click)="logout()">
+                  Logout
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
         <div
           class="task"
           *ngFor="let task of tasks"
@@ -31,7 +58,23 @@
           [ngClass]="{ completed: task.completed }"
         >
           <p>{{ task.title }}</p>
+          <div class="task-buttons">
+
+            <button class="button">
+              <div class="icon">
+                <i class="fas fa-edit"></i>
+              </div>
+            </button>
+  
+            <button class="button is-danger" style="margin-left: 10px;">
+              <div class="icon">
+                <i class="fas fa-trash"></i>
+              </div>
+            </button>
+  
+          </div>
         </div>
+       
 
         <h3 class="empty-state-text" *ngIf="tasks.length === 0">
           There are no tasks here! Click the add button to create a new task.
