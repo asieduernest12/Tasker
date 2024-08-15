@@ -11,6 +11,12 @@
           routerLinkActive="is-active"
         >
           <p>{{ list.title }}</p>
+
+          <button class="button is-danger list-delete-btn" style="margin-left: auto;" (click)="onDeleteListClick(list._id)">
+            <div class="icon">
+              <i class="fas fa-trash"></i>
+            </div>
+          </button>
         </a>
 
       </div>
@@ -57,16 +63,16 @@
           (click)="onTaskClick(task)"
           [ngClass]="{ completed: task.completed }"
         >
-          <p>{{ task.title }}</p>
+          <p class="task-text">{{ task.title }}</p>
           <div class="task-buttons">
 
-            <button class="button">
+            <button class="button" routerLink="./edit-task/{{task._id}}">
               <div class="icon">
                 <i class="fas fa-edit"></i>
               </div>
             </button>
   
-            <button class="button is-danger" style="margin-left: 10px;">
+            <button class="button is-danger" style="margin-left: 10px;" (click)="onDeleteTaskClick(task._id)">
               <div class="icon">
                 <i class="fas fa-trash"></i>
               </div>
