@@ -10,7 +10,7 @@ export class WebRequestService {
 
   constructor(private http: HttpClient) {
     // this.ROOT_URL = process.env['ROOT_URL'] ?? 'http://localhost:3000';
-    this.ROOT_URL = "/api";
+    this.ROOT_URL = '/api';
   }
 
   get(uri: string) {
@@ -36,8 +36,8 @@ export class WebRequestService {
       { observe: 'response' }
     );
   }
-  
-  signup(email:string, password:string) {
+
+  signup(email: string, password: string) {
     return this.http.post(
       `${this.ROOT_URL}/users/signup`,
       { email, password },

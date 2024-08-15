@@ -15,7 +15,8 @@
 		"reset:mongo": "docker compose kill mongo && docker compose rm -f mongo && rm -rf data && docker compose up -d mongo",
 		"start:mongo": "docker compose up -d mongo",
 		"angular:logs": "docker compose logs -f angular",
-		"docker:stats": "docker stats"
+		"docker:stats": "docker stats",
+		"test:frontend":"npm --prefix frontend run test -- --reporters [mocha]"
 
 	},
 	"devDependencies": {
